@@ -21,6 +21,8 @@
 		810607D6168D64740069D2C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810607B7168D64730069D2C6 /* Foundation.framework */; };
 		810607DE168D64740069D2C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 810607DC168D64740069D2C6 /* InfoPlist.strings */; };
 		810607E1168D64740069D2C6 /* Hottest100_BingoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607E0168D64740069D2C6 /* Hottest100_BingoTests.m */; };
+		810607F5169667480069D2C6 /* BingoBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607F4169667480069D2C6 /* BingoBoardViewController.m */; };
+		810607F8169667D40069D2C6 /* BingoTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607F7169667D40069D2C6 /* BingoTile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		810607DD168D64740069D2C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		810607DF168D64740069D2C6 /* Hottest100_BingoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Hottest100_BingoTests.h; sourceTree = "<group>"; };
 		810607E0168D64740069D2C6 /* Hottest100_BingoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hottest100_BingoTests.m; sourceTree = "<group>"; };
+		810607F3169667480069D2C6 /* BingoBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingoBoardViewController.h; sourceTree = "<group>"; };
+		810607F4169667480069D2C6 /* BingoBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingoBoardViewController.m; sourceTree = "<group>"; };
+		810607F6169667D40069D2C6 /* BingoTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingoTile.h; sourceTree = "<group>"; };
+		810607F7169667D40069D2C6 /* BingoTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingoTile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,9 @@
 		810607BB168D64730069D2C6 /* Hottest100 Bingo */ = {
 			isa = PBXGroup;
 			children = (
+				810607F9169669130069D2C6 /* Views */,
+				810607EB169666070069D2C6 /* Model */,
+				810607EA169665F20069D2C6 /* View Controllers */,
 				810607C4168D64740069D2C6 /* AppDelegate.h */,
 				810607C5168D64740069D2C6 /* AppDelegate.m */,
 				810607BC168D64730069D2C6 /* Supporting Files */,
@@ -150,6 +159,31 @@
 				810607DC168D64740069D2C6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		810607EA169665F20069D2C6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				810607F3169667480069D2C6 /* BingoBoardViewController.h */,
+				810607F4169667480069D2C6 /* BingoBoardViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		810607EB169666070069D2C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		810607F9169669130069D2C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				810607F6169667D40069D2C6 /* BingoTile.h */,
+				810607F7169667D40069D2C6 /* BingoTile.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +297,8 @@
 			files = (
 				810607C2168D64730069D2C6 /* main.m in Sources */,
 				810607C6168D64740069D2C6 /* AppDelegate.m in Sources */,
+				810607F5169667480069D2C6 /* BingoBoardViewController.m in Sources */,
+				810607F8169667D40069D2C6 /* BingoTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
