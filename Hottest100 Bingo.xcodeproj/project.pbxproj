@@ -23,6 +23,7 @@
 		810607E1168D64740069D2C6 /* Hottest100_BingoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607E0168D64740069D2C6 /* Hottest100_BingoTests.m */; };
 		810607F5169667480069D2C6 /* BingoBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607F4169667480069D2C6 /* BingoBoardViewController.m */; };
 		810607F8169667D40069D2C6 /* BingoTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607F7169667D40069D2C6 /* BingoTile.m */; };
+		810607FB1696850E0069D2C6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810607FA1696850D0069D2C6 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		810607F4169667480069D2C6 /* BingoBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingoBoardViewController.m; sourceTree = "<group>"; };
 		810607F6169667D40069D2C6 /* BingoTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingoTile.h; sourceTree = "<group>"; };
 		810607F7169667D40069D2C6 /* BingoTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingoTile.m; sourceTree = "<group>"; };
+		810607FA1696850D0069D2C6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				810607FB1696850E0069D2C6 /* QuartzCore.framework in Frameworks */,
 				810607B6168D64730069D2C6 /* UIKit.framework in Frameworks */,
 				810607B8168D64730069D2C6 /* Foundation.framework in Frameworks */,
 				810607BA168D64730069D2C6 /* CoreGraphics.framework in Frameworks */,
@@ -88,6 +91,7 @@
 		810607A6168D64730069D2C6 = {
 			isa = PBXGroup;
 			children = (
+				810607FA1696850D0069D2C6 /* QuartzCore.framework */,
 				810607BB168D64730069D2C6 /* Hottest100 Bingo */,
 				810607D9168D64740069D2C6 /* Hottest100 BingoTests */,
 				810607B4168D64730069D2C6 /* Frameworks */,
