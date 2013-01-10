@@ -59,6 +59,12 @@
 //    return YES;
 //}
 
+-(BOOL) textFieldShouldBeginEditing:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TextFieldStarted" object:self userInfo:nil];
+    NSLog(@"Rob");
+    return YES;
+}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];

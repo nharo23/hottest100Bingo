@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BingoBoardViewController : UIViewController
+@interface BingoBoardViewController : UIViewController <UITextFieldDelegate>
 
 @end

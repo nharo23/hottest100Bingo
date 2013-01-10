@@ -34,12 +34,15 @@
 }
 -(void) setupOneTwoThree {
     UITextField* numberOneTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 380, 320, 12)];
+    numberOneTextField.delegate = self;
     numberOneTextField.backgroundColor = [UIColor yellowColor];
     
     UITextField* numberTwoTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 400, 320, 12)];
+    numberTwoTextField.delegate = self;
     numberTwoTextField.backgroundColor = [UIColor blueColor];
     
     UITextField* numberThreeTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 420, 320, 12)];
+    numberThreeTextField.delegate = self;
     numberThreeTextField.backgroundColor = [UIColor grayColor];
     
     [self addSubview:numberOneTextField];
@@ -47,5 +50,18 @@
     [self addSubview:numberThreeTextField];
     
 }
+
+-(BOOL) textFieldShouldBeginEditing:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TextFieldStarted" object:self userInfo:nil];
+    NSLog(@"Rob");
+    return YES;
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
+
 
 @end

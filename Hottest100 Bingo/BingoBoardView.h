@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BingoBoardView : UIScrollView
+@interface BingoBoardView : UIScrollView <UITextFieldDelegate>
 
 @end
