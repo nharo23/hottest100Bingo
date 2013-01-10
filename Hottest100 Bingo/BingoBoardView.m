@@ -217,6 +217,7 @@
 
 -(void) rulesButtonTapped {
     
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"rulesButtonTapped" object:self userInfo:nil];
 }
 
 -(void) linkButtonTapped {

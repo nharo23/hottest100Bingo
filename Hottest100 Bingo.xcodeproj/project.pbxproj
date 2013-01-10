@@ -27,6 +27,7 @@
 		810607FE169EAD7C0069D2C6 /* BingoBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607FD169EAD7C0069D2C6 /* BingoBoardView.m */; };
 		81060804169F0B6B0069D2C6 /* IMG_0392.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 81060803169F0B6B0069D2C6 /* IMG_0392.JPG */; };
 		81060806169F5EEE0069D2C6 /* x_transparent.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81060805169F5EEE0069D2C6 /* x_transparent.jpg */; };
+		8106080D169F6F020069D2C6 /* RulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106080C169F6F020069D2C6 /* RulesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		810607FD169EAD7C0069D2C6 /* BingoBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingoBoardView.m; sourceTree = "<group>"; };
 		81060803169F0B6B0069D2C6 /* IMG_0392.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0392.JPG; sourceTree = "<group>"; };
 		81060805169F5EEE0069D2C6 /* x_transparent.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = x_transparent.jpg; sourceTree = "<group>"; };
+		8106080B169F6F020069D2C6 /* RulesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesViewController.h; sourceTree = "<group>"; };
+		8106080C169F6F020069D2C6 /* RulesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +184,8 @@
 				810607FD169EAD7C0069D2C6 /* BingoBoardView.m */,
 				81060805169F5EEE0069D2C6 /* x_transparent.jpg */,
 				81060803169F0B6B0069D2C6 /* IMG_0392.JPG */,
+				8106080B169F6F020069D2C6 /* RulesViewController.h */,
+				8106080C169F6F020069D2C6 /* RulesViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				810607F5169667480069D2C6 /* BingoBoardViewController.m in Sources */,
 				810607F8169667D40069D2C6 /* BingoTile.m in Sources */,
 				810607FE169EAD7C0069D2C6 /* BingoBoardView.m in Sources */,
+				8106080D169F6F020069D2C6 /* RulesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

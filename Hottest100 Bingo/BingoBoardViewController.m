@@ -9,6 +9,8 @@
 
 #import "BingoBoardViewController.h"
 #import "BingoBoardView.h"
+#import "RulesViewController.h"
+
 #define kKeyboardHeight 216
 
 
@@ -35,6 +37,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldStartedEditing:) name:@"TextFieldStarted" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rulesButtonTapped:) name:@"rulesButtonTapped" object:nil];
+    
     
     
     
@@ -69,6 +73,12 @@
     
     //[self.mainBingoBoardView setContentOffset:CGPointMake(0, ) animated:YES];
 //    
+}
+
+- (void) rulesButtonTapped:(NSNotification *) notification    {
+    RulesViewController *rulesViewController = [[RulesViewController alloc] init];
+    //rulesViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 20);
+    [self presentViewController:rulesViewController animated:YES completion:nil];
 }
 
 
