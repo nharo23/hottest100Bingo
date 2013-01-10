@@ -44,7 +44,7 @@
         self.artistText.scrollEnabled = NO;
         self.artistText.autocorrectionType = UITextAutocorrectionTypeNo;
         
-        self.crossedOutImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"x_transparent.jpg"]];
+        self.crossedOutImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"x_transparent.png"]];
         [self.crossedOutImage setFrame:CGRectMake(0, 0, TILE_WIDTH, TILE_HEIGHT)];
         self.crossedOutImage.hidden = YES;
         

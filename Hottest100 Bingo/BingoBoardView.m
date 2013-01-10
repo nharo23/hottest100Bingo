@@ -27,7 +27,7 @@
 
 @property (nonatomic,strong) UIButton* saveButton;
 @property (nonatomic,strong) UIButton* rulesButton;
-@property (nonatomic,strong) UIButton* linkButton;
+@property (nonatomic,strong) UIButton* songListButton;
 
 @property (nonatomic, strong) NSMutableArray* dataArray;
 
@@ -51,9 +51,10 @@
 -(void) setupHeading {
     UITextField* heading = [[UITextField alloc] initWithFrame:CGRectMake(0, 5, 320, 30)];
     heading.text = @"HOTTEST 100 BINGO";
-    heading.textColor = [UIColor redColor];
+    heading.textColor = [UIColor colorWithRed:0.486111 green:0 blue:0 alpha:1.0];
     heading.textAlignment = NSTextAlignmentCenter;
     [heading setFont:[UIFont boldSystemFontOfSize:26.0]];
+    heading.userInteractionEnabled = NO;
     [self addSubview:heading];
 }
 
@@ -113,11 +114,11 @@
     [self.rulesButton setTitle:@"Rules" forState:UIControlStateNormal];
     [self.rulesButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];
     
-    self.linkButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.linkButton.frame = CGRectMake(220, 430, 80, 20);
-    [self.linkButton setTitle:@"Song List" forState:UIControlStateNormal];
-    [self.linkButton addTarget:self action:@selector(linkButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    [self.linkButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];
+    self.songListButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.songListButton.frame = CGRectMake(220, 430, 80, 20);
+    [self.songListButton setTitle:@"Song List" forState:UIControlStateNormal];
+    [self.songListButton addTarget:self action:@selector(songListButtonTapped) forControlEvents:UIControlEventTouchUpInside] ;
+    [self.songListButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];
 
     
     [self addSubview:self.numberOneTextField];
@@ -126,7 +127,7 @@
     
     [self addSubview:self.saveButton];
     [self addSubview:self.rulesButton];
-    [self addSubview:self.linkButton];
+    [self addSubview:self.songListButton];
     
 }
 
@@ -220,8 +221,8 @@
      [[NSNotificationCenter defaultCenter] postNotificationName:@"rulesButtonTapped" object:self userInfo:nil];
 }
 
--(void) linkButtonTapped {
-    
+-(void) songListButtonTapped {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"songListButtonTapped" object:self userInfo:nil];
 }
 
 -(void) saveData {
@@ -293,26 +294,5 @@
         }
     }
 }
-
-//-(void) bingoTileTapped:(UITapGestureRecognizer *)recognizer {
-//    int i = 0;
-//}
-//
-//-(void) bingoTileTapped {
-//    int j = 0;
-//}
-//
-//-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-//    
-////    otherGestureRecognizer.state = UIGestureRecognizerStateRecognized;
-//   // [otherGestureRecognizer setEnabled:YES];
-//   // [gestureRecognizer setEnabled:YES];
-//    return YES;
-//    
-//}
-//
-//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-//    return YES;
-//}
 
 @end

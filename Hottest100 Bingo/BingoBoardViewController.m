@@ -10,6 +10,7 @@
 #import "BingoBoardViewController.h"
 #import "BingoBoardView.h"
 #import "RulesViewController.h"
+#import "SVModalWebViewController.h"
 
 #define kKeyboardHeight 216
 
@@ -38,9 +39,7 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldStartedEditing:) name:@"TextFieldStarted" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rulesButtonTapped:) name:@"rulesButtonTapped" object:nil];
-    
-    
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(songListButtonTapped:) name:@"songListButtonTapped" object:nil];
     
     self.mainBingoBoardView = [[BingoBoardView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     self.mainBingoBoardView.backgroundColor = [UIColor whiteColor];
@@ -81,6 +80,8 @@
     [self presentViewController:rulesViewController animated:YES completion:nil];
 }
 
-
-
+- (void) songListButtonTapped:(NSNotification *) notification    {
+    SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:@"http://www.abc.net.au/triplej/hottest100/12/"];
+    [self presentViewController:webViewController animated:YES completion:nil];
+}
 @end

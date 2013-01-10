@@ -25,9 +25,15 @@
 		810607F8169667D40069D2C6 /* BingoTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607F7169667D40069D2C6 /* BingoTile.m */; };
 		810607FB1696850E0069D2C6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810607FA1696850D0069D2C6 /* QuartzCore.framework */; };
 		810607FE169EAD7C0069D2C6 /* BingoBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607FD169EAD7C0069D2C6 /* BingoBoardView.m */; };
-		81060804169F0B6B0069D2C6 /* IMG_0392.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 81060803169F0B6B0069D2C6 /* IMG_0392.JPG */; };
-		81060806169F5EEE0069D2C6 /* x_transparent.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81060805169F5EEE0069D2C6 /* x_transparent.jpg */; };
 		8106080D169F6F020069D2C6 /* RulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106080C169F6F020069D2C6 /* RulesViewController.m */; };
+		81060814169F78880069D2C6 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81060810169F78880069D2C6 /* SVModalWebViewController.m */; };
+		81060815169F78880069D2C6 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81060811169F78880069D2C6 /* SVWebViewController.bundle */; };
+		81060816169F78880069D2C6 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81060813169F78880069D2C6 /* SVWebViewController.m */; };
+		81060818169F789B0069D2C6 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81060817169F789B0069D2C6 /* MessageUI.framework */; };
+		8106081A169F7E500069D2C6 /* x_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 81060819169F7E500069D2C6 /* x_transparent.png */; };
+		81060820169F86300069D2C6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8106081F169F86300069D2C6 /* Icon.png */; };
+		81060822169F86660069D2C6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81060821169F86660069D2C6 /* Icon@2x.png */; };
+		81060824169F86970069D2C6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 81060823169F86970069D2C6 /* Icon-72.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,10 +73,18 @@
 		810607FA1696850D0069D2C6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		810607FC169EAD7C0069D2C6 /* BingoBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingoBoardView.h; sourceTree = "<group>"; };
 		810607FD169EAD7C0069D2C6 /* BingoBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingoBoardView.m; sourceTree = "<group>"; };
-		81060803169F0B6B0069D2C6 /* IMG_0392.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0392.JPG; sourceTree = "<group>"; };
-		81060805169F5EEE0069D2C6 /* x_transparent.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = x_transparent.jpg; sourceTree = "<group>"; };
 		8106080B169F6F020069D2C6 /* RulesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesViewController.h; sourceTree = "<group>"; };
 		8106080C169F6F020069D2C6 /* RulesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesViewController.m; sourceTree = "<group>"; };
+		8106080F169F78880069D2C6 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
+		81060810169F78880069D2C6 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
+		81060811169F78880069D2C6 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
+		81060812169F78880069D2C6 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
+		81060813169F78880069D2C6 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
+		81060817169F789B0069D2C6 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		81060819169F7E500069D2C6 /* x_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_transparent.png; sourceTree = "<group>"; };
+		8106081F169F86300069D2C6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		81060821169F86660069D2C6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		81060823169F86970069D2C6 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81060818169F789B0069D2C6 /* MessageUI.framework in Frameworks */,
 				810607FB1696850E0069D2C6 /* QuartzCore.framework in Frameworks */,
 				810607B6168D64730069D2C6 /* UIKit.framework in Frameworks */,
 				810607B8168D64730069D2C6 /* Foundation.framework in Frameworks */,
@@ -101,6 +116,10 @@
 		810607A6168D64730069D2C6 = {
 			isa = PBXGroup;
 			children = (
+				81060821169F86660069D2C6 /* Icon@2x.png */,
+				8106081F169F86300069D2C6 /* Icon.png */,
+				81060823169F86970069D2C6 /* Icon-72.png */,
+				81060817169F789B0069D2C6 /* MessageUI.framework */,
 				810607FA1696850D0069D2C6 /* QuartzCore.framework */,
 				810607BB168D64730069D2C6 /* Hottest100 Bingo */,
 				810607D9168D64740069D2C6 /* Hottest100 BingoTests */,
@@ -182,10 +201,10 @@
 				810607F4169667480069D2C6 /* BingoBoardViewController.m */,
 				810607FC169EAD7C0069D2C6 /* BingoBoardView.h */,
 				810607FD169EAD7C0069D2C6 /* BingoBoardView.m */,
-				81060805169F5EEE0069D2C6 /* x_transparent.jpg */,
-				81060803169F0B6B0069D2C6 /* IMG_0392.JPG */,
+				81060819169F7E500069D2C6 /* x_transparent.png */,
 				8106080B169F6F020069D2C6 /* RulesViewController.h */,
 				8106080C169F6F020069D2C6 /* RulesViewController.m */,
+				8106080E169F78880069D2C6 /* SVWebViewController */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -204,6 +223,18 @@
 				810607F7169667D40069D2C6 /* BingoTile.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		8106080E169F78880069D2C6 /* SVWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8106080F169F78880069D2C6 /* SVModalWebViewController.h */,
+				81060810169F78880069D2C6 /* SVModalWebViewController.m */,
+				81060811169F78880069D2C6 /* SVWebViewController.bundle */,
+				81060812169F78880069D2C6 /* SVWebViewController.h */,
+				81060813169F78880069D2C6 /* SVWebViewController.m */,
+			);
+			path = SVWebViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,8 +312,11 @@
 				810607C8168D64740069D2C6 /* Default.png in Resources */,
 				810607CA168D64740069D2C6 /* Default@2x.png in Resources */,
 				810607CC168D64740069D2C6 /* Default-568h@2x.png in Resources */,
-				81060804169F0B6B0069D2C6 /* IMG_0392.JPG in Resources */,
-				81060806169F5EEE0069D2C6 /* x_transparent.jpg in Resources */,
+				81060815169F78880069D2C6 /* SVWebViewController.bundle in Resources */,
+				8106081A169F7E500069D2C6 /* x_transparent.png in Resources */,
+				81060820169F86300069D2C6 /* Icon.png in Resources */,
+				81060822169F86660069D2C6 /* Icon@2x.png in Resources */,
+				81060824169F86970069D2C6 /* Icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +357,8 @@
 				810607F8169667D40069D2C6 /* BingoTile.m in Sources */,
 				810607FE169EAD7C0069D2C6 /* BingoBoardView.m in Sources */,
 				8106080D169F6F020069D2C6 /* RulesViewController.m in Sources */,
+				81060814169F78880069D2C6 /* SVModalWebViewController.m in Sources */,
+				81060816169F78880069D2C6 /* SVWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +455,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hottest100 Bingo/Hottest100 Bingo-Prefix.pch";
 				INFOPLIST_FILE = "Hottest100 Bingo/Hottest100 Bingo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -430,6 +467,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hottest100 Bingo/Hottest100 Bingo-Prefix.pch";
 				INFOPLIST_FILE = "Hottest100 Bingo/Hottest100 Bingo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
