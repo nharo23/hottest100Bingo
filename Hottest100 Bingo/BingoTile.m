@@ -11,9 +11,6 @@
 #import "BingoTile.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define SONG_PLACEHOLDER_TEXT @"Enter song name"
-#define ARTIST_PLACEHOLDER_TEXT @"Enter artist name"
-
 @implementation BingoTile
 
 - (id)initWithFrame:(CGRect)frame
@@ -21,19 +18,18 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor colorWithRed:0.992 green:0.949 blue:0.82 alpha:1.0];
-        
-        
-        
+    
         self.songText = [[UITextView alloc] init];
         self.songText.delegate = self;
         [self.songText setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.songText setFont:[UIFont systemFontOfSize:10.0]];
-        //self.songText.layer.borderWidth = 0.5;
         self.songText.textColor = [UIColor lightGrayColor];
         self.songText.backgroundColor = [UIColor clearColor];
         self.songText.tag = 1;
         self.songText.text = SONG_PLACEHOLDER_TEXT;
         self.songText.textAlignment = NSTextAlignmentCenter;
+        self.songText.scrollEnabled = NO;
+        self.songText.autocorrectionType = UITextAutocorrectionTypeNo;
         
         self.artistText = [[UITextView alloc] init];
         self.artistText.delegate = self;
@@ -41,11 +37,11 @@
         [self.artistText setFont:[UIFont systemFontOfSize:10.0]];
         self.artistText.textColor = [UIColor lightGrayColor];
         self.artistText.backgroundColor = [UIColor clearColor];
-       // self.artistText.layer.borderWidth = 0.5;
         self.artistText.tag = 2;
         self.artistText.textAlignment = NSTextAlignmentCenter;
         self.artistText.text = ARTIST_PLACEHOLDER_TEXT;
-        
+        self.artistText.scrollEnabled = NO;
+        self.artistText.autocorrectionType = UITextAutocorrectionTypeNo;
         
         [self addSubview:self.songText];
         [self addSubview:self.artistText];
@@ -104,7 +100,9 @@
 }
 
 -(void) updateTextViewText:(UITextView*)textView {
-    if(textView.text.length == 0){
+    
+    [textView setEditable:YES];
+    if(textView.text.length == 0 || [textView.text isEqualToString:SONG_PLACEHOLDER_TEXT] || [textView.text isEqualToString:ARTIST_PLACEHOLDER_TEXT]){
         textView.textColor = [UIColor lightGrayColor];
         if(textView.tag == 1) {
             self.songText.text = SONG_PLACEHOLDER_TEXT;
@@ -112,6 +110,8 @@
             self.artistText.text = ARTIST_PLACEHOLDER_TEXT;
         }
         [textView resignFirstResponder];
+    } else {
+        textView.textColor = [UIColor redColor];
     }
 }
 

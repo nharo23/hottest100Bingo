@@ -17,6 +17,7 @@
 #define NUMBER_ONE_HINT @"Enter your number one prediction"
 #define NUMBER_TWO_HINT @"Enter your number two prediction"
 #define NUMBER_THREE_HINT @"Enter your number three prediction"
+#define TITLE_TEXT @"HOTTEST 100 BINGO";
 
 @interface BingoBoardView()
 @property (nonatomic,strong) UITextField* numberOneTextField;
@@ -27,6 +28,8 @@
 @property (nonatomic,strong) UIButton* rulesButton;
 @property (nonatomic,strong) UIButton* linkButton;
 
+@property (nonatomic, strong) NSMutableArray* dataArray;
+
 @property BOOL isBoardSaved;
 @end
 
@@ -36,9 +39,12 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.dataArray = [[NSMutableArray alloc] init];
+        [self loadData];
         [self setupHeading];
         [self setupBoard];
         [self setupOneTwoThree];
+        [self applySavedDate];
     }
     return self;
 }
@@ -69,6 +75,7 @@
     self.numberOneTextField.textColor = [UIColor lightGrayColor];
     self.numberOneTextField.tag = 2;
     self.numberOneTextField.layer.borderWidth = 1.0;
+    self.numberOneTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     
     self.numberTwoTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 375, 280, 20)];
     self.numberTwoTextField.delegate = self;
@@ -78,6 +85,7 @@
     self.numberTwoTextField.textColor = [UIColor lightGrayColor];
     self.numberTwoTextField.tag = 3;
     self.numberTwoTextField.layer.borderWidth = 1.0;
+    self.numberTwoTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     
     self.numberThreeTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 400, 280, 20)];
     self.numberThreeTextField.textAlignment = NSTextAlignmentCenter;
@@ -87,21 +95,23 @@
     self.numberThreeTextField.textColor = [UIColor lightGrayColor];
     self.numberThreeTextField.tag = 4;
     self.numberThreeTextField.layer.borderWidth = 1.0;
+    self.numberThreeTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     
     self.saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.saveButton.frame = CGRectMake(20, 430, 70, 20);
+    self.saveButton.frame = CGRectMake(20, 430, 80, 20);
     [self.saveButton addTarget:self action:@selector(saveButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    [self.saveButton setTitle:@"Save" forState:UIControlStateNormal];
+    
+    [self.saveButton setTitle:self.isBoardSaved ? @"Edit Board" :@"Start Game!" forState:UIControlStateNormal];
     [self.saveButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];
     
     self.rulesButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.rulesButton.frame =  CGRectMake(120, 430, 70, 20);
+    self.rulesButton.frame =  CGRectMake(120, 430, 80, 20);
     [self.rulesButton addTarget:self action:@selector(rulesButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [self.rulesButton setTitle:@"Rules" forState:UIControlStateNormal];
     [self.rulesButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];
     
     self.linkButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.linkButton.frame = CGRectMake(210, 430, 70, 20);
+    self.linkButton.frame = CGRectMake(220, 430, 80, 20);
     [self.linkButton setTitle:@"Song List" forState:UIControlStateNormal];
     [self.linkButton addTarget:self action:@selector(linkButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [self.linkButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];
@@ -148,7 +158,7 @@
 }
 
 -(void) updateTextFieldText:(UITextField*)textField {
-    if(textField.text.length == 0){
+    if(textField.text.length == 0 || [textField.text isEqualToString:NUMBER_ONE_HINT] || [textField.text isEqualToString:NUMBER_TWO_HINT] || [textField.text isEqualToString:NUMBER_THREE_HINT]){
         textField.textColor = [UIColor lightGrayColor];
         if(textField.tag == 2) {
             self.numberOneTextField.text = NUMBER_ONE_HINT;
@@ -157,12 +167,50 @@
         } else if(textField.tag == 4)  {
             self.numberTwoTextField.text = NUMBER_THREE_HINT;
         }
+    } else {
+        textField.textColor = [UIColor redColor];
     }
 }
 
 -(void) saveButtonTapped {
+    [self saveData];
+    
+    if(self.isBoardSaved) {
+        self.isBoardSaved = NO;
+        [self.saveButton setTitle:@"Start Game!" forState:UIControlStateNormal];
 
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Are you trying to cheat?" message:@"We play by the honour system. No changing your mind after the countdown has started" delegate:self cancelButtonTitle:@"I promise" otherButtonTitles:nil];
+        [alertView show];
+        
+    } else if([self isAllFieldsEntered]) {
+        self.isBoardSaved = YES;
+        [self.saveButton setTitle:@"Edit Game" forState:UIControlStateNormal];
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Game On!" message:@"Alright! Tap on the bingo squares to mark them as played" delegate:self cancelButtonTitle:@"Let's do this!" otherButtonTitles:nil];
+        [alertView show];
+    } else {
+       self.isBoardSaved = NO;
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Seriously?" message:@"Try filling out all the fields. I didn't think it was that hard.." delegate:self cancelButtonTitle:@"Sorry, I'll try harder" otherButtonTitles:nil];
+        [alertView show];
+    }
+    [self toggleGameOnAndOff];
 }
+
+-(BOOL) isAllFieldsEntered {
+    for (NSString* dataElement in self.dataArray) {
+        NSString *storedValue = [dataElement description];
+        if (![storedValue length]
+            || [storedValue isEqualToString:NUMBER_ONE_HINT]
+            || [storedValue isEqualToString:NUMBER_TWO_HINT]
+            || [storedValue isEqualToString:NUMBER_THREE_HINT]
+            || [storedValue isEqualToString:ARTIST_PLACEHOLDER_TEXT]
+            || [storedValue isEqualToString:SONG_PLACEHOLDER_TEXT]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 
 -(void) rulesButtonTapped {
     
@@ -172,6 +220,74 @@
     
 }
 
+-(void) saveData {
+    [self.dataArray removeAllObjects];
+    for (UIView* view in [self subviews]) {
+
+        if([view isKindOfClass:[UITextField class]] && ![((UITextView*)view).text isEqualToString:@"HOTTEST 100 BINGO"] ) {
+            [self.dataArray addObject:((UITextView*)view).text];
+        }
+        
+        if([view isKindOfClass:[BingoTile class]]) {
+            [self.dataArray addObject:((BingoTile*)view).songText.text];
+            [self.dataArray addObject:((BingoTile*)view).artistText.text];
+        }
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:self.dataArray forKey:@"dataArray"];
+    [[NSUserDefaults standardUserDefaults] setBool:self.isBoardSaved forKey:@"isBoardSaved"];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+-(void) loadData {
+    
+    self.dataArray = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"dataArray"]];
+    self.isBoardSaved = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBoardSaved"];
+}
+
+-(void) applySavedDate {
+    if([self.dataArray count]) {
+        int i = 0;
+        for (UIView* view in [self subviews]) {
+            if([view isKindOfClass:[UITextField class]] && ![((UITextView*)view).text isEqualToString:@"HOTTEST 100 BINGO"] ) {
+                
+                ((UITextField*)view).text = self.dataArray[i];
+                [self updateTextFieldText:((UITextField*)view)];
+                i++;
+            }
+            
+            if([view isKindOfClass:[BingoTile class]]) {
+                
+                ((BingoTile*)view).songText.text = self.dataArray[i];
+                [((BingoTile*)view) updateTextViewText:((BingoTile*)view).songText];
+                i++;
+                
+                ((BingoTile*)view).artistText.text = self.dataArray[i];
+                [((BingoTile*)view) updateTextViewText:((BingoTile*)view).artistText];
+                i++;
+            }
+
+        }
+    }
+}
+
+-(void) toggleGameOnAndOff {
+    
+    if([self.dataArray count]) {
+        for (UIView* view in [self subviews]) {
+            
+            if([view isKindOfClass:[UITextField class]] && ![((UITextView*)view).text isEqualToString:@"HOTTEST 100 BINGO"] ) {
+                [((UITextField*)view) setEnabled:!self.isBoardSaved];
+            }
+            
+            if([view isKindOfClass:[BingoTile class]]) {
+                
+                [((BingoTile*)view).artistText setEditable:!self.isBoardSaved];
+                [((BingoTile*)view).songText setEditable:!self.isBoardSaved];
+            }
+        }
+    }
+}
 
 
 @end

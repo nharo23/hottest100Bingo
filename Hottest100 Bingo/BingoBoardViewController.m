@@ -32,7 +32,6 @@
 {
     [super viewDidLoad];
     
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldStartedEditing:) name:@"TextFieldStarted" object:nil];
@@ -48,17 +47,6 @@
 
 }
 
-//
-//-(void) keyboardWillShow:(NSNotification *) notification    {
-//    
-//    NSValue *endingFrame = [[notification userInfo] valueForKey:UIKeyboardFrameEndUserInfoKey];
-//    CGRect keyboardFrame;
-//    [endingFrame getValue:&keyboardFrame];
-//
-//    self.keyboardHeight = keyboardFrame.size.height;
-//    
-//}
-//
 -(void) keyboardWillHide:(NSNotification *) notification {
     [self.mainBingoBoardView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
