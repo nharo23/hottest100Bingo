@@ -24,6 +24,7 @@
 		810607F5169667480069D2C6 /* BingoBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607F4169667480069D2C6 /* BingoBoardViewController.m */; };
 		810607F8169667D40069D2C6 /* BingoTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607F7169667D40069D2C6 /* BingoTile.m */; };
 		810607FB1696850E0069D2C6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810607FA1696850D0069D2C6 /* QuartzCore.framework */; };
+		810607FE169EAD7C0069D2C6 /* BingoBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607FD169EAD7C0069D2C6 /* BingoBoardView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		810607F6169667D40069D2C6 /* BingoTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingoTile.h; sourceTree = "<group>"; };
 		810607F7169667D40069D2C6 /* BingoTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingoTile.m; sourceTree = "<group>"; };
 		810607FA1696850D0069D2C6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		810607FC169EAD7C0069D2C6 /* BingoBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingoBoardView.h; sourceTree = "<group>"; };
+		810607FD169EAD7C0069D2C6 /* BingoBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingoBoardView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +173,8 @@
 			children = (
 				810607F3169667480069D2C6 /* BingoBoardViewController.h */,
 				810607F4169667480069D2C6 /* BingoBoardViewController.m */,
+				810607FC169EAD7C0069D2C6 /* BingoBoardView.h */,
+				810607FD169EAD7C0069D2C6 /* BingoBoardView.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 				810607C6168D64740069D2C6 /* AppDelegate.m in Sources */,
 				810607F5169667480069D2C6 /* BingoBoardViewController.m in Sources */,
 				810607F8169667D40069D2C6 /* BingoTile.m in Sources */,
+				810607FE169EAD7C0069D2C6 /* BingoBoardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
