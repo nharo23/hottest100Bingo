@@ -10,6 +10,7 @@
 
 #import "BingoTile.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
 
 @implementation BingoTile
 
@@ -43,8 +44,13 @@
         self.artistText.scrollEnabled = NO;
         self.artistText.autocorrectionType = UITextAutocorrectionTypeNo;
         
+        self.crossedOutImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"x_transparent.jpg"]];
+        [self.crossedOutImage setFrame:CGRectMake(0, 0, TILE_WIDTH, TILE_HEIGHT)];
+        self.crossedOutImage.hidden = YES;
+        
         [self addSubview:self.songText];
         [self addSubview:self.artistText];
+        [self addSubview:self.crossedOutImage];
         
         NSDictionary *layoutviews = NSDictionaryOfVariableBindings(_artistText, _songText);
         
@@ -64,6 +70,11 @@
         CGColorRef redBorderColor = CGColorRetain([[UIColor redColor] CGColor] );
         self.layer.borderColor = redBorderColor;
         self.layer.borderWidth = 1.0;
+        
+        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        recognizer.delegate = self;
+        [self addGestureRecognizer:recognizer];
+        
     }
     return self;
 }
@@ -113,6 +124,24 @@
     } else {
         textView.textColor = [UIColor redColor];
     }
+}
+
+-(void) toggleXImage {
+    self.crossedOutImage.hidden = !self.crossedOutImage.hidden;
+}
+
+
+- (void)handleTap:(UITapGestureRecognizer *)recognizer {
+    
+    if([(AppDelegate*)[[UIApplication sharedApplication] delegate] isBoardSaved]) {
+        self.crossedOutImage.hidden = !self.crossedOutImage.hidden;
+    }
+
+}
+
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 

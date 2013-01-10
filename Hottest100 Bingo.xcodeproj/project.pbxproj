@@ -25,6 +25,8 @@
 		810607F8169667D40069D2C6 /* BingoTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607F7169667D40069D2C6 /* BingoTile.m */; };
 		810607FB1696850E0069D2C6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810607FA1696850D0069D2C6 /* QuartzCore.framework */; };
 		810607FE169EAD7C0069D2C6 /* BingoBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810607FD169EAD7C0069D2C6 /* BingoBoardView.m */; };
+		81060804169F0B6B0069D2C6 /* IMG_0392.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 81060803169F0B6B0069D2C6 /* IMG_0392.JPG */; };
+		81060806169F5EEE0069D2C6 /* x_transparent.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81060805169F5EEE0069D2C6 /* x_transparent.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		810607FA1696850D0069D2C6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		810607FC169EAD7C0069D2C6 /* BingoBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingoBoardView.h; sourceTree = "<group>"; };
 		810607FD169EAD7C0069D2C6 /* BingoBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingoBoardView.m; sourceTree = "<group>"; };
+		81060803169F0B6B0069D2C6 /* IMG_0392.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0392.JPG; sourceTree = "<group>"; };
+		81060805169F5EEE0069D2C6 /* x_transparent.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = x_transparent.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,8 @@
 				810607F4169667480069D2C6 /* BingoBoardViewController.m */,
 				810607FC169EAD7C0069D2C6 /* BingoBoardView.h */,
 				810607FD169EAD7C0069D2C6 /* BingoBoardView.m */,
+				81060805169F5EEE0069D2C6 /* x_transparent.jpg */,
+				81060803169F0B6B0069D2C6 /* IMG_0392.JPG */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -270,6 +276,8 @@
 				810607C8168D64740069D2C6 /* Default.png in Resources */,
 				810607CA168D64740069D2C6 /* Default@2x.png in Resources */,
 				810607CC168D64740069D2C6 /* Default-568h@2x.png in Resources */,
+				81060804169F0B6B0069D2C6 /* IMG_0392.JPG in Resources */,
+				81060806169F5EEE0069D2C6 /* x_transparent.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

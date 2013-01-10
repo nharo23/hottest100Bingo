@@ -13,11 +13,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BingoTile : UIView <UITextViewDelegate>
+@interface BingoTile : UIView <UITextViewDelegate, UIGestureRecognizerDelegate>
 
 @property(nonatomic,strong) UITextView *artistText;
 @property(nonatomic, strong) UITextView *songText;
+@property(nonatomic, strong) UIImageView *crossedOutImage;
 
 -(void) updateTextViewText:(UITextView*)textView;
+
+-(void) toggleXImage;
+
+- (void)handleTap:(UITapGestureRecognizer *)recognizer;
 
 @end

@@ -9,6 +9,7 @@
 #import "BingoBoardView.h"
 #import "BingoTile.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
 
 #define NUMBER_OF_TILES 16
 #define BINGO_X_MARGIN 8
@@ -30,7 +31,6 @@
 
 @property (nonatomic, strong) NSMutableArray* dataArray;
 
-@property BOOL isBoardSaved;
 @end
 
 @implementation BingoBoardView
@@ -63,6 +63,9 @@
         int tableXPos =((fmodf(i, 4)*TILE_WIDTH) + BINGO_X_MARGIN);
         int tableYPos =((floor(i / 4)*TILE_HEIGHT) + BINGO_Y_MARGIN);
         BingoTile *bingoTile = [[BingoTile alloc] initWithFrame:CGRectMake(tableXPos, tableYPos, TILE_WIDTH, TILE_HEIGHT)];
+        UIGestureRecognizer *singleTap = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(bingoTileTapped)];
+        [bingoTile addGestureRecognizer:singleTap];
+        bingoTile.userInteractionEnabled = YES;
         [self addSubview:bingoTile];
     }
 }
@@ -101,7 +104,7 @@
     self.saveButton.frame = CGRectMake(20, 430, 80, 20);
     [self.saveButton addTarget:self action:@selector(saveButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.saveButton setTitle:self.isBoardSaved ? @"Edit Board" :@"Start Game!" forState:UIControlStateNormal];
+    [self.saveButton setTitle:[(AppDelegate*)[[UIApplication sharedApplication] delegate] isBoardSaved] ? @"Edit Board" :@"Start Game!" forState:UIControlStateNormal];
     [self.saveButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];
     
     self.rulesButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -175,21 +178,21 @@
 -(void) saveButtonTapped {
     [self saveData];
     
-    if(self.isBoardSaved) {
-        self.isBoardSaved = NO;
+    if([(AppDelegate*)[[UIApplication sharedApplication] delegate] isBoardSaved]) {
+        [(AppDelegate*)[[UIApplication sharedApplication] delegate] setIsBoardSaved:NO];
         [self.saveButton setTitle:@"Start Game!" forState:UIControlStateNormal];
 
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Are you trying to cheat?" message:@"We play by the honour system. No changing your mind after the countdown has started" delegate:self cancelButtonTitle:@"I promise" otherButtonTitles:nil];
         [alertView show];
         
     } else if([self isAllFieldsEntered]) {
-        self.isBoardSaved = YES;
+        [(AppDelegate*)[[UIApplication sharedApplication] delegate] setIsBoardSaved:YES];
         [self.saveButton setTitle:@"Edit Game" forState:UIControlStateNormal];
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Game On!" message:@"Alright! Tap on the bingo squares to mark them as played" delegate:self cancelButtonTitle:@"Let's do this!" otherButtonTitles:nil];
         [alertView show];
     } else {
-       self.isBoardSaved = NO;
+        [(AppDelegate*)[[UIApplication sharedApplication] delegate] setIsBoardSaved:NO];
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Seriously?" message:@"Try filling out all the fields. I didn't think it was that hard.." delegate:self cancelButtonTitle:@"Sorry, I'll try harder" otherButtonTitles:nil];
         [alertView show];
     }
@@ -234,7 +237,8 @@
         }
     }
     [[NSUserDefaults standardUserDefaults] setObject:self.dataArray forKey:@"dataArray"];
-    [[NSUserDefaults standardUserDefaults] setBool:self.isBoardSaved forKey:@"isBoardSaved"];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:[(AppDelegate*)[[UIApplication sharedApplication] delegate] isBoardSaved] forKey:@"isBoardSaved"];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -242,7 +246,7 @@
 -(void) loadData {
     
     self.dataArray = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"dataArray"]];
-    self.isBoardSaved = [[NSUserDefaults standardUserDefaults] boolForKey:@"isBoardSaved"];
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] setIsBoardSaved:[[NSUserDefaults standardUserDefaults] boolForKey:@"isBoardSaved"]];
 }
 
 -(void) applySavedDate {
@@ -277,17 +281,37 @@
         for (UIView* view in [self subviews]) {
             
             if([view isKindOfClass:[UITextField class]] && ![((UITextView*)view).text isEqualToString:@"HOTTEST 100 BINGO"] ) {
-                [((UITextField*)view) setEnabled:!self.isBoardSaved];
+                [((UITextField*)view) setEnabled:![(AppDelegate*)[[UIApplication sharedApplication] delegate] isBoardSaved]];
             }
             
             if([view isKindOfClass:[BingoTile class]]) {
                 
-                [((BingoTile*)view).artistText setEditable:!self.isBoardSaved];
-                [((BingoTile*)view).songText setEditable:!self.isBoardSaved];
+                [((BingoTile*)view).artistText setEditable:![(AppDelegate*)[[UIApplication sharedApplication] delegate] isBoardSaved]];
+                [((BingoTile*)view).songText setEditable:![(AppDelegate*)[[UIApplication sharedApplication] delegate] isBoardSaved]];
             }
         }
     }
 }
 
+//-(void) bingoTileTapped:(UITapGestureRecognizer *)recognizer {
+//    int i = 0;
+//}
+//
+//-(void) bingoTileTapped {
+//    int j = 0;
+//}
+//
+//-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+//    
+////    otherGestureRecognizer.state = UIGestureRecognizerStateRecognized;
+//   // [otherGestureRecognizer setEnabled:YES];
+//   // [gestureRecognizer setEnabled:YES];
+//    return YES;
+//    
+//}
+//
+//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+//    return YES;
+//}
 
 @end
