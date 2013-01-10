@@ -11,6 +11,16 @@
 #define NUMBER_OF_TILES 16
 #define BINGO_MARGIN 8
 
+#define NUMBER_ONE_HINT @"Enter your number one prediction"
+#define NUMBER_TWO_HINT @"Enter your number two prediction"
+#define NUMBER_THREE_HINT @"Enter your number three prediction"
+
+@interface BingoBoardView()
+@property UITextField* numberOneTextField;
+@property UITextField* numberTwoTextField;
+@property UITextField* numberThreeTextField;
+@end
+
 @implementation BingoBoardView
 
 - (id)initWithFrame:(CGRect)frame
@@ -33,27 +43,49 @@
     }
 }
 -(void) setupOneTwoThree {
-    UITextField* numberOneTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 380, 320, 12)];
-    numberOneTextField.delegate = self;
-    numberOneTextField.backgroundColor = [UIColor yellowColor];
+    self.numberOneTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 340, 280, 30)];
+    self.numberOneTextField.delegate = self;
+    self.numberOneTextField.textAlignment = NSTextAlignmentCenter;
+    self.numberOneTextField.backgroundColor = [UIColor colorWithRed:0.992 green:0.949 blue:0.82 alpha:1.0];
+    self.numberOneTextField.text = NUMBER_ONE_HINT;
+    self.numberOneTextField.textColor = [UIColor lightGrayColor];
+    self.numberOneTextField.tag = 2;
     
-    UITextField* numberTwoTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 400, 320, 12)];
-    numberTwoTextField.delegate = self;
-    numberTwoTextField.backgroundColor = [UIColor blueColor];
+    self.numberTwoTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 380, 280, 30)];
+    self.numberTwoTextField.delegate = self;
+    self.numberTwoTextField.textAlignment = NSTextAlignmentCenter;
+    self.numberTwoTextField.backgroundColor = [UIColor colorWithRed:0.992 green:0.949 blue:0.82 alpha:1.0];
+    self.numberTwoTextField.text = NUMBER_TWO_HINT;
+    self.numberTwoTextField.textColor = [UIColor lightGrayColor];
+    self.numberTwoTextField.tag = 3;
     
-    UITextField* numberThreeTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 420, 320, 12)];
-    numberThreeTextField.delegate = self;
-    numberThreeTextField.backgroundColor = [UIColor grayColor];
+    self.numberThreeTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 420, 280, 30)];
+    self.numberThreeTextField.textAlignment = NSTextAlignmentCenter;
+    self.numberThreeTextField.delegate = self;
+    self.numberThreeTextField.backgroundColor = [UIColor colorWithRed:0.992 green:0.949 blue:0.82 alpha:1.0];
+    self.numberThreeTextField.text = NUMBER_THREE_HINT;
+    self.numberThreeTextField.textColor = [UIColor lightGrayColor];
+    self.numberThreeTextField.tag = 4;
     
-    [self addSubview:numberOneTextField];
-    [self addSubview:numberTwoTextField];
-    [self addSubview:numberThreeTextField];
+    [self addSubview:self.numberOneTextField];
+    [self addSubview:self.numberTwoTextField];
+    [self addSubview:self.numberThreeTextField];
     
 }
 
 -(BOOL) textFieldShouldBeginEditing:(UITextField *)textField {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TextFieldStarted" object:self userInfo:nil];
-    NSLog(@"Rob");
+
+    if (textField.textColor == [UIColor lightGrayColor]) {
+        textField.text = @"";
+        textField.textColor = [UIColor redColor];
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    [self updateTextFieldText:textField];
     return YES;
 }
 
@@ -62,6 +94,45 @@
     [textField resignFirstResponder];
     return NO;
 }
+
+//
+//-(void) textViewDidChange:(UITextView *)textView
+//{
+//    [self updateTextViewText:textView];
+//}
+//
+//- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+//    [self updateTextViewText:textView];
+//    return YES;
+//}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string; {
+    if([@"\n" isEqualToString:string]) {
+        [textField resignFirstResponder];
+        return NO;
+    }
+//        else {
+//        textField.text = string
+//        [self updateTextFieldText:textField];
+//    }
+    
+    return YES;
+}
+
+
+
+-(void) updateTextFieldText:(UITextField*)textField {
+    if(textField.text.length == 0){
+        textField.textColor = [UIColor lightGrayColor];
+        if(textField.tag == 2) {
+            self.numberOneTextField.text = NUMBER_ONE_HINT;
+        } if(textField.tag == 3) {
+            self.numberTwoTextField.text = NUMBER_TWO_HINT;
+        } else if(textField.tag == 4)  {
+            self.numberTwoTextField.text = NUMBER_THREE_HINT;
+        }
+    }
+}
+
 
 
 @end

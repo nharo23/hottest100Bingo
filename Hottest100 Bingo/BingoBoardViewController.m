@@ -24,7 +24,6 @@
 -(id)init {
     self = [super init];
     if (self) {
-        self.view.backgroundColor = [UIColor redColor];
     }
     return self;
 }
@@ -34,14 +33,14 @@
     [super viewDidLoad];
     
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldStartedEditing:) name:@"TextFieldStarted" object:nil];
     
     
     
     self.mainBingoBoardView = [[BingoBoardView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    self.mainBingoBoardView.backgroundColor = [UIColor greenColor];
+    self.mainBingoBoardView.backgroundColor = [UIColor whiteColor];
     self.mainBingoBoardView.alwaysBounceVertical = YES;
     
     
@@ -60,10 +59,10 @@
 //    
 //}
 //
-//-(void) keyboardWillHide:(NSNotification *) notification {
-//    NSLog(@"HO");    
-//}
-//
+-(void) keyboardWillHide:(NSNotification *) notification {
+    [self.mainBingoBoardView setContentOffset:CGPointMake(0, 0) animated:YES];
+}
+
 -(void) textFieldStartedEditing:(NSNotification *) notification    {
     
     UITextField* currentTextField = [notification object];

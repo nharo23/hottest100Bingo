@@ -10,10 +10,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BingoTile : UIView <UITextFieldDelegate>
+@interface BingoTile : UIView <UITextViewDelegate>
 
-@property(nonatomic,strong) UITextField *artistText;
-@property(nonatomic, strong) UITextField *songText;
+@property(nonatomic,strong) UITextView *artistText;
+@property(nonatomic, strong) UITextView *songText;
 
 
 @end
